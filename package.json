@@ -1,6 +1,6 @@
 {
   "name": "paf",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Shitty, static and cacheless http server",
   "main": "index.js",
   
