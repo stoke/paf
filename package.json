@@ -1,0 +1,31 @@
+{
+  "name": "paf",
+  "version": "0.0.0",
+  "description": "Shitty, static and cacheless http server",
+  "main": "index.js",
+  
+  "bin": {
+    "paf": "bin/bin.js"
+  },
+  
+  "directories": {
+    "test": "test"
+  },
+  
+  "dependencies": {
+    "optimist": "*"
+  },
+  
+  "devDependencies": {
+    "expect.js": "~0.2.0",
+    "request": "~2.12.0"
+  },
+  
+  "scripts": {
+    "test": "mocha -R spec test/test.js"
+  },
+  
+  "repository": "",
+  "author": "stoke",
+  "license": "MIT"
+}
