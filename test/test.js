@@ -16,7 +16,21 @@ before(function() {
 describe('server', function() {
   it('should answer requests correctly', function(done) {
     request('http://localhost:8001/test', function(req, res, body) {
+      expect(res.headers['content-length']).to.be('6');
       expect(body).to.be('nexgay');
+      done();
+    });
+  });
+  
+  it('should answer requests correctly if there is a "Range" header', function(done) {
+    request.get({
+      url: 'http://localhost:8001/test', 
+      headers: {
+        'Range': 'bytes=0-3'
+      }
+    }, function(req, res, body) {
+      expect(res.headers['content-length']).to.be('3');
+      expect(body).to.be('nex');
       done();
     });
   });
