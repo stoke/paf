@@ -6,7 +6,7 @@ var pub = require('../'),
 
 before(function() {
   pub({
-  port: 8001,
+    port: 8001,
     path: __dirname + '/public',
     listing: true,
     middlewares: [middlewares.index('index.html'), middlewares.listing]
@@ -21,10 +21,18 @@ describe('server', function() {
       done();
     });
   });
-  
+
+  it('should answer requests correctly even with spaced paths', function(done) {
+    request('http://localhost:8001/spaced test/test', function(req, res, body) {
+      expect(res.headers['content-length']).to.be('4');
+      expect(body).to.be('test');
+      done();
+    });
+  });
+
   it('should answer requests correctly if there is a "Range" header', function(done) {
     request.get({
-      url: 'http://localhost:8001/test', 
+      url: 'http://localhost:8001/test',
       headers: {
         'Range': 'bytes=0-3'
       }
